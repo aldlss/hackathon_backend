@@ -3,6 +3,7 @@ module github.com/aldlss/hackathon_backend
 go 1.20
 
 require (
+	github.com/agiledragon/gomonkey/v2 v2.10.0
 	github.com/bytedance/sonic v1.8.1
 	github.com/cloudwego/hertz v0.6.3
 	github.com/neo4j/neo4j-go-driver/v5 v5.8.1

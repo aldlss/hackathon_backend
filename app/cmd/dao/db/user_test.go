@@ -72,7 +72,7 @@ func (s *testUser) SetupSuite() {
 }
 
 func (s *testUser) TearDownSuite() {
-	err := UserPgDb.Migrator().DropTable(os.Getenv("TABLE_NAME"))
+	err := UserPgDb.Migrator().DropTable(os.Getenv("USER_TABLE_NAME"))
 	if err != nil {
 		log.Error(err.Error())
 	}

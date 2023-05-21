@@ -6,12 +6,16 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"math/rand"
 	"os"
+	"time"
 )
 
 var (
-	Driver   neo4j.DriverWithContext
-	UserPgDb *gorm.DB
+	Driver      neo4j.DriverWithContext
+	UserPgDb    *gorm.DB
+	ContentPgDb *gorm.DB
+	random      *rand.Rand
 )
 
 func initNeo4j() {
@@ -42,9 +46,16 @@ func initPgsql() {
 		log.Fatal("USER_TABLE_NAME can't be empty")
 	}
 	UserPgDb = db.Table(tableName)
+
+	tableName = os.Getenv("CONTENT_TABLE_NAME")
+	if tableName == "" {
+		log.Fatal("CONTENT_TABLE_NAME can't be empty")
+	}
+	ContentPgDb = db.Table(tableName)
 }
 
 func Init() {
 	//initNeo4j()
 	initPgsql()
+	random = rand.New(rand.NewSource(time.Now().UnixNano()))
 }

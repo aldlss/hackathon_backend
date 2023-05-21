@@ -20,7 +20,6 @@ type LoginResp struct {
 }
 
 func getIdPw(ctx context.Context, c *app.RequestContext) (*userReq, error) {
-
 	var req userReq
 	err := c.BindAndValidate(&req)
 	if err != nil {

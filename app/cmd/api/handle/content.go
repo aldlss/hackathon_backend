@@ -74,13 +74,13 @@ func saveImg(name string, data string) error {
 		return errno.ServiceErr
 	}
 
-	newdata, err := base64.StdEncoding.DecodeString(data)
+	newData, err := base64.StdEncoding.DecodeString(data)
 	if err != nil {
 		log.Error(err.Error())
 		return err
 	}
 
-	err = os.WriteFile(path.Join(imgPath, name), newdata, 0644)
+	err = os.WriteFile(path.Join(imgPath, name), newData, 0644)
 	if err != nil {
 		log.Error(err.Error())
 		return err

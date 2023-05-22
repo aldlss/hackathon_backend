@@ -6,7 +6,6 @@ require (
 	github.com/agiledragon/gomonkey/v2 v2.10.0
 	github.com/bytedance/sonic v1.8.1
 	github.com/cloudwego/hertz v0.6.3
-	github.com/neo4j/neo4j-go-driver/v5 v5.8.1
 	github.com/sirupsen/logrus v1.9.2
 	github.com/stretchr/testify v1.8.1
 	gorm.io/driver/postgres v1.5.2

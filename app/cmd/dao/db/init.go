@@ -2,7 +2,6 @@ package db
 
 import (
 	"fmt"
-	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -12,21 +11,10 @@ import (
 )
 
 var (
-	Driver      neo4j.DriverWithContext
 	UserPgDb    *gorm.DB
 	ContentPgDb *gorm.DB
 	random      *rand.Rand
 )
-
-func initNeo4j() {
-	var err error
-	uri := os.Getenv("NEO4J_URL")
-	auth := neo4j.BasicAuth(os.Getenv("NEO4J_USERNAME"), os.Getenv("NEO4J_PASSWORD"), "")
-	Driver, err = neo4j.NewDriverWithContext(uri, auth)
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-}
 
 func initPgsql() {
 	dsn := fmt.Sprintf("host=%s port='%s' user=%s password=%s dbname=%s TimeZone=Asia/Shanghai connect_timeout=10",
@@ -55,7 +43,6 @@ func initPgsql() {
 }
 
 func Init() {
-	//initNeo4j()
 	initPgsql()
 	random = rand.New(rand.NewSource(time.Now().UnixNano()))
 }

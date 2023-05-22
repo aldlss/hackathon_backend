@@ -25,7 +25,7 @@
     use .
     ```
 
-- PostgreSQL
+- PostgresSQL
 
     需要有两个数据库，分别字段如下：
     

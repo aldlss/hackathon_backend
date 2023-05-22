@@ -19,7 +19,7 @@ type LoginResp struct {
 	Token string `json:"token"`
 }
 
-func getIdPw(ctx context.Context, c *app.RequestContext) (*userReq, error) {
+func getIdPw(c *app.RequestContext) (*userReq, error) {
 	var req userReq
 	err := c.BindAndValidate(&req)
 	if err != nil {
@@ -30,7 +30,7 @@ func getIdPw(ctx context.Context, c *app.RequestContext) (*userReq, error) {
 
 func UserRegister(ctx context.Context, c *app.RequestContext) {
 
-	req, err := getIdPw(ctx, c)
+	req, err := getIdPw(c)
 
 	if err != nil {
 		log.Error(err.Error())
@@ -50,7 +50,7 @@ func UserRegister(ctx context.Context, c *app.RequestContext) {
 
 func UserLogin(ctx context.Context, c *app.RequestContext) {
 
-	req, err := getIdPw(ctx, c)
+	req, err := getIdPw(c)
 
 	if err != nil {
 		log.Error(err.Error())

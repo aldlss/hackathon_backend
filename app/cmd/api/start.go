@@ -25,9 +25,6 @@ func Start() {
 	contentGroup.GET("/get", handle.ContentGet)
 	contentGroup.POST("/new", handle.ContentNew)
 
-	relationGroup := xunyaGroup.Group("/relation")
-	relationGroup.GET("/great", handle.GreatAction)
-
 	r.NoRoute(func(c context.Context, ctx *app.RequestContext) {
 		ctx.Status(constants.NotFound)
 	})

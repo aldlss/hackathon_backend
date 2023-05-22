@@ -12,6 +12,7 @@ func Start() {
 	r := server.Default(
 		server.WithHostPorts("[::]:9961"),
 		server.WithHandleMethodNotAllowed(true),
+		server.WithMaxRequestBodySize(128*1024*1024),
 	)
 
 	xunyaGroup := r.Group("/xunya")
